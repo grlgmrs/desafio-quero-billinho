@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Enrollment } from 'src/enrollments/entities/enrollment.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum PaymentMethod {
   CreditCard = 'credit_card',
@@ -21,4 +22,7 @@ export class Student {
 
   @Column('varchar')
   payment_method: PaymentMethod;
+
+  @OneToMany(() => Enrollment, (enrollment) => enrollment.student)
+  enrollments: Enrollment[];
 }

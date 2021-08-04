@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { StudentsModule } from './students/students.module';
+import { EnrollmentsModule } from './enrollments/enrollments.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { StudentsModule } from './students/students.module';
       entities: [process.env.TYPEORM_ENTITIES],
     }),
     StudentsModule,
+    EnrollmentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
