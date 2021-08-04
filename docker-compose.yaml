@@ -8,6 +8,8 @@ services:
       - 3000:3000
     volumes:
       - .:/var/www/app
+    depends_on:
+      - db
     extra_hosts:
       - 'host.docker.internal:172.17.0.1'
 
