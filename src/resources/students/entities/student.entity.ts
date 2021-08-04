@@ -1,4 +1,4 @@
-import { Enrollment } from 'src/enrollments/entities/enrollment.entity';
+import { Enrollment } from '../../enrollments/entities/enrollment.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum PaymentMethod {

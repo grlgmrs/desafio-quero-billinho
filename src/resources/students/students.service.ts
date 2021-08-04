@@ -4,7 +4,7 @@ import {
   Paginate,
   PaginateHelper,
   PaginateRequestDto,
-} from '../shared/paginate';
+} from '../../shared/paginate';
 import { Repository } from 'typeorm';
 import { CreateStudentDto } from './dto/create-student.dto';
 import { Student } from './entities/student.entity';

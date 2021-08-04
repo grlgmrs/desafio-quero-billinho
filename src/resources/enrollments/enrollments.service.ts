@@ -4,7 +4,7 @@ import {
   Paginate,
   PaginateHelper,
   PaginateRequestDto,
-} from 'src/shared/paginate';
+} from '../../shared/paginate';
 import { Repository } from 'typeorm';
 import { CreateEnrollmentDto } from './dto/create-enrollment.dto';
 import { Bill } from './entities/bill.entity';
