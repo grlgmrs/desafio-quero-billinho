@@ -1,7 +1,16 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { EnrollmentsService } from './enrollments.service';
 import { CreateEnrollmentDto } from './dto/create-enrollment.dto';
 import { UpdateEnrollmentDto } from './dto/update-enrollment.dto';
+import { PaginateRequestDto } from 'src/shared/paginate';
 
 @Controller('enrollments')
 export class EnrollmentsController {
@@ -13,8 +22,8 @@ export class EnrollmentsController {
   }
 
   @Get()
-  findAll() {
-    return this.enrollmentsService.findAll();
+  findAll(@Body() paginateRequestDto: PaginateRequestDto) {
+    return this.enrollmentsService.findAll(paginateRequestDto);
   }
 
   @Get(':id')
@@ -23,7 +32,10 @@ export class EnrollmentsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateEnrollmentDto: UpdateEnrollmentDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateEnrollmentDto: UpdateEnrollmentDto,
+  ) {
     return this.enrollmentsService.update(+id, updateEnrollmentDto);
   }
 

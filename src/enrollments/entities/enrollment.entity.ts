@@ -2,6 +2,7 @@ import { Student } from 'src/students/entities/student.entity';
 import {
   Column,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -22,9 +23,15 @@ export class Enrollment {
   @Column()
   due_day: number;
 
+  @Column()
+  student_id: number;
+
   @ManyToOne(() => Student, (student) => student.enrollments)
+  @JoinColumn({ name: 'student_id' })
   student: number;
 
-  @OneToMany(() => Bill, (bill) => bill.enrollment)
+  @OneToMany(() => Bill, (bill) => bill.enrollment, {
+    cascade: ['insert'],
+  })
   bills: Bill[];
 }

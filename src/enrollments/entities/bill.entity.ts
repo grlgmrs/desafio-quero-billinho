@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Enrollment } from './enrollment.entity';
 
 export enum BillStatus {
@@ -22,5 +28,6 @@ export class Bill {
   status: BillStatus = BillStatus.Open;
 
   @ManyToOne(() => Enrollment, (enrollment) => enrollment.bills)
+  @JoinColumn({ name: 'enrollment_id' })
   enrollment: Enrollment;
 }
