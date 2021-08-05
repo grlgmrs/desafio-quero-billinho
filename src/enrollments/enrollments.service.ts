@@ -7,7 +7,6 @@ import {
 } from 'src/shared/paginate';
 import { Repository } from 'typeorm';
 import { CreateEnrollmentDto } from './dto/create-enrollment.dto';
-import { UpdateEnrollmentDto } from './dto/update-enrollment.dto';
 import { Bill } from './entities/bill.entity';
 import { Enrollment } from './entities/enrollment.entity';
 import BillGeneratorHelper from './helpers/bill-generator';
@@ -39,17 +38,5 @@ export class EnrollmentsService {
     const paginateHelper = new PaginateHelper(this.enrollmentRepo);
 
     return paginateHelper.paginate(paginateRequestDto);
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} enrollment`;
-  }
-
-  update(id: number, updateEnrollmentDto: UpdateEnrollmentDto) {
-    return `This action updates a #${id} enrollment`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} enrollment`;
   }
 }
