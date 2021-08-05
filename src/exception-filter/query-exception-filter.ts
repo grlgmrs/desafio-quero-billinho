@@ -1,5 +1,5 @@
 import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
-import { EntityNotFoundError, QueryFailedError } from 'typeorm';
+import { QueryFailedError } from 'typeorm';
 import { Response } from 'express';
 
 @Catch(QueryFailedError)
