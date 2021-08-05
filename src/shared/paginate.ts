@@ -17,13 +17,14 @@ export interface Paginate<T> {
 }
 
 export class PaginateHelper<T> {
-  constructor(private repo: Repository<T>) {}
+  constructor(private repo: Repository<T>, private relations?: string[]) {}
 
   async paginate(paginateRequestDto: PaginateRequestDto): Promise<Paginate<T>> {
     const currentPage = paginateRequestDto.page || 1;
     const take = paginateRequestDto.count || 4;
 
     const [result, _] = await this.repo.findAndCount({
+      relations: this.relations,
       take,
       skip: (currentPage - 1) * take,
     });

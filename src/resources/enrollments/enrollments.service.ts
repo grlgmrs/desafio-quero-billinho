@@ -35,7 +35,7 @@ export class EnrollmentsService {
   findAll(
     paginateRequestDto: PaginateRequestDto,
   ): Promise<Paginate<Enrollment>> {
-    const paginateHelper = new PaginateHelper(this.enrollmentRepo);
+    const paginateHelper = new PaginateHelper(this.enrollmentRepo, ['bills']);
 
     return paginateHelper.paginate(paginateRequestDto);
   }
