@@ -1,5 +1,6 @@
 import { Enrollment } from '../../enrollments/entities/enrollment.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { CreateStudentDto } from '../dto/create-student.dto';
 
 export enum PaymentMethod {
   CreditCard = 'credit_card',
@@ -8,6 +9,15 @@ export enum PaymentMethod {
 
 @Entity({ name: 'students' })
 export class Student {
+  constructor(createStudentDto?: CreateStudentDto) {
+    if (createStudentDto) {
+      this.name = createStudentDto.name;
+      this.cpf = createStudentDto.cpf;
+      this.birthdate = createStudentDto.birthdate;
+      this.payment_method = createStudentDto.payment_method;
+    }
+  }
+
   @PrimaryGeneratedColumn('increment')
   id: number;
 

@@ -26,8 +26,8 @@ describe('Validate Pipes in CreateStudentDto', () => {
         expect(err.getResponse().message).toEqual([
           'name should not be empty',
           'cpf is not a valid cpf',
-          'paymentMethod should not be empty',
-          'paymentMethod must be "credit_card" or "boleto"',
+          'payment_method should not be empty',
+          'payment_method must be "credit_card" or "boleto"',
         ]);
       });
   });
@@ -36,7 +36,7 @@ describe('Validate Pipes in CreateStudentDto', () => {
     const dataToTest = {
       name: 'Joao da Silva',
       cpf: '11111111111',
-      paymentMethod: 'credit_card',
+      payment_method: 'credit_card',
     };
 
     await target
@@ -50,14 +50,14 @@ describe('Validate Pipes in CreateStudentDto', () => {
     const dataToTest = {
       name: 'Joao da Silva',
       cpf: '566.262.960-94',
-      paymentMethod: 'paypal',
+      payment_method: 'paypal',
     };
 
     await target
       .transform(dataToTest, createStudantDtoMetadata)
       .catch((err) => {
         expect(err.getResponse().message).toEqual([
-          'paymentMethod must be "credit_card" or "boleto"',
+          'payment_method must be "credit_card" or "boleto"',
         ]);
       });
   });
@@ -67,7 +67,7 @@ describe('Validate Pipes in CreateStudentDto', () => {
       name: 'Joao da Silva',
       cpf: '566.262.960-94',
       birthdate: '2000-31-03T00:00:00.000Z',
-      paymentMethod: 'credit_card',
+      payment_method: 'credit_card',
     };
 
     await target
@@ -84,14 +84,14 @@ describe('Validate Pipes in CreateStudentDto', () => {
       name: 'Joao da Silva',
       cpf: '566.262.960-94',
       birthdate: '2000-08-03T00:00:00.000Z',
-      paymentMethod: 'credit_card',
+      payment_method: 'credit_card',
     };
 
     await target
       .transform(dataToTest, createStudantDtoMetadata)
       .catch((err) => {
         expect(err.getResponse().message).toEqual([
-          'paymentMethod must be "credit_card" or "boleto"',
+          'payment_method must be "credit_card" or "boleto"',
         ]);
       });
   });

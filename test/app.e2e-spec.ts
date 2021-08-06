@@ -5,14 +5,7 @@ import { Connection } from 'typeorm';
 import { CreateStudentDto } from '../src/modules/students/dto/create-student.dto';
 import * as faker from 'faker';
 import * as fakerBr from 'faker-br';
-import { PaymentMethod } from '../src/modules/students/entities/student.entity';
-
-const randomPaymentMethod = (): PaymentMethod =>
-  PaymentMethod[
-    faker.helpers.replaceSymbolWithNumber(
-      faker.random.arrayElement(Object.getOwnPropertyNames(PaymentMethod)),
-    )
-  ];
+import { randomPaymentMethod } from '@shared/utils/faker/random-payment-method';
 
 const generateRandomStudent = (): CreateStudentDto => ({
   name: faker.name.findName(),

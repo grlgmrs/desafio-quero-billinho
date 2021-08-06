@@ -16,7 +16,7 @@ export class CreateStudentDto {
   birthdate: Date;
 
   @IsEnum(PaymentMethod, {
-    message: 'paymentMethod must be "credit_card" or "boleto"',
+    message: 'payment_method must be "credit_card" or "boleto"',
   })
   @IsNotEmpty()
   payment_method: PaymentMethod;
