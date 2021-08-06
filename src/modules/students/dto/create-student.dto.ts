@@ -1,6 +1,6 @@
 import { IsDateString, IsEnum, IsNotEmpty, IsOptional } from 'class-validator';
 import { Transform } from 'class-transformer';
-import { IsValidCPF } from '../../../validators/is-valid-cpf.rule';
+import { IsValidCPF } from '@shared/validators/is-valid-cpf.rule';
 import { PaymentMethod } from '../entities/student.entity';
 
 export class CreateStudentDto {

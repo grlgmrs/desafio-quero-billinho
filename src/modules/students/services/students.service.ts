@@ -1,18 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import {
-  Paginate,
+  IPaginate,
   PaginateHelper,
   PaginateRequestDto,
-} from '../../shared/paginate';
-import { Repository } from 'typeorm';
-import { CreateStudentDto } from './dto/create-student.dto';
-import { Student } from './entities/student.entity';
+} from '@shared/helpers/paginate-helper';
+import { CreateStudentDto } from '../dto/create-student.dto';
+import { Student } from '../entities/student.entity';
+import { IStudentsRepository } from '../repositories/istudents-repository';
 
 @Injectable()
 export class StudentsService {
   constructor(
-    @InjectRepository(Student) private studentRepo: Repository<Student>,
+    @InjectRepository(Student) private studentRepo: IStudentsRepository,
   ) {}
 
   async create(createStudentDto: CreateStudentDto) {
@@ -23,7 +23,7 @@ export class StudentsService {
 
   async findAll(
     paginateRequestDto: PaginateRequestDto,
-  ): Promise<Paginate<Student>> {
+  ): Promise<IPaginate<Student>> {
     const paginateHelper = new PaginateHelper(this.studentRepo);
 
     return paginateHelper.paginate(paginateRequestDto);

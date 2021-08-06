@@ -9,7 +9,11 @@
     "target": "es2017",
     "sourceMap": true,
     "outDir": "./dist",
+    "incremental": true,
     "baseUrl": "./",
-    "incremental": true
+    "paths": {
+      "@modules/*": ["src/modules/*"],
+      "@shared/*": ["src/shared/*"]
+    }
   }
 }

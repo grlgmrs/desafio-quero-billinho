@@ -2,10 +2,10 @@ import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
 import { Connection } from 'typeorm';
-import { CreateStudentDto } from '../src/resources/students/dto/create-student.dto';
+import { CreateStudentDto } from '../src/modules/students/dto/create-student.dto';
 import * as faker from 'faker';
 import * as fakerBr from 'faker-br';
-import { PaymentMethod } from '../src/resources/students/entities/student.entity';
+import { PaymentMethod } from '../src/modules/students/entities/student.entity';
 
 const randomPaymentMethod = (): PaymentMethod =>
   PaymentMethod[

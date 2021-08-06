@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
-import { StudentsService } from './students.service';
-import { CreateStudentDto } from './dto/create-student.dto';
-import { PaginateRequestDto } from '../../shared/paginate';
+import { StudentsService } from '../services/students.service';
+import { CreateStudentDto } from '../dto/create-student.dto';
+import { PaginateRequestDto } from '@shared/helpers/paginate-helper';
 
 @Controller('students')
 export class StudentsController {
