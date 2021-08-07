@@ -36,4 +36,8 @@ export class EnrollmentsFakeRepository implements IEnrollmentRepository {
       this.enrollments.length,
     ]);
   }
+
+  getLastId(): number {
+    return this.enrollments.length;
+  }
 }
