@@ -1,3 +1,4 @@
+import { IPaginateOptions } from '@shared/helpers/paginate-helper/ipaginate';
 import { fakePromise } from '@shared/utils/faker/fake-promise';
 import { CreateStudentDto } from '../dto/create-student.dto';
 import { Student } from '../entities/student.entity';
@@ -19,13 +20,7 @@ export class StudentsFakeRepository implements IStudentsRepository {
     return fakePromise<Student>(newStudent);
   }
 
-  findAndCount(options?: {
-    relations?: string[];
-    take?: number;
-    skip?: number;
-  }): Promise<[Student[], number]> {
-    const { take, skip } = options;
-
+  findAndCount({ take, skip }: IPaginateOptions): Promise<[Student[], number]> {
     return fakePromise([
       this.studentsFake.splice(skip!, take!),
       this.studentsFake.length,

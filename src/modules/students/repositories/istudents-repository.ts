@@ -5,6 +5,5 @@ import { Student } from '../entities/student.entity';
 export interface IStudentsRepository extends IPaginateRepository<Student> {
   create(createStudentDto: CreateStudentDto): Student;
 
-  save(student: Student): Promise<Student>;
-  save(student: CreateStudentDto): Promise<Student>;
+  save(student: Student | CreateStudentDto): Promise<Student>;
 }

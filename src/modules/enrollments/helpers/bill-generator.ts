@@ -13,10 +13,10 @@ export default class BillGeneratorHelper {
     const bills: Bill[] = Array.from(
       { length: this.enrollment.installments },
       (_, index) =>
-        <Bill>{
+        new Bill({
           amount,
           due_date: generateDueDate(this.enrollment.due_day, index + 1),
-        },
+        }),
     );
 
     return bills;

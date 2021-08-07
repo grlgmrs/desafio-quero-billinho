@@ -5,6 +5,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { CreateBillDto } from '../dto/create-bill.dto';
 import { Enrollment } from './enrollment.entity';
 
 export enum BillStatus {
@@ -15,6 +16,13 @@ export enum BillStatus {
 
 @Entity('bills')
 export class Bill {
+  constructor(bill?: CreateBillDto) {
+    if (bill) {
+      this.amount = bill.amount;
+      this.due_date = bill.due_date;
+    }
+  }
+
   @PrimaryGeneratedColumn('increment')
   id: number;
 

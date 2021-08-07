@@ -8,9 +8,19 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Bill } from './bill.entity';
+import { CreateEnrollmentDto } from '../dto/create-enrollment.dto';
 
 @Entity('enrollments')
 export class Enrollment {
+  constructor(createEnrollmentDto?: CreateEnrollmentDto) {
+    if (createEnrollmentDto) {
+      this.amount = createEnrollmentDto.amount;
+      this.due_day = createEnrollmentDto.due_day;
+      this.installments = createEnrollmentDto.installments;
+      this.student_id = createEnrollmentDto.student_id;
+    }
+  }
+
   @PrimaryGeneratedColumn('increment')
   id: number;
 
