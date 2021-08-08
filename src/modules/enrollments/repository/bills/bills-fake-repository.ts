@@ -1,9 +1,13 @@
 import { fakePromise } from '@shared/utils/faker/fake-promise';
 import { CreateBillDto } from '../../dto/create-bill.dto';
 import { Bill } from '../../entities/bill.entity';
+import { GenerateBillHelper } from './helpers/generate-bill-helper';
 import { IBillRepository } from './ibill-repository';
 
-export class BillsFakeRepository implements IBillRepository {
+export class BillsFakeRepository
+  extends GenerateBillHelper
+  implements IBillRepository
+{
   private bills: Bill[] = [];
 
   create(bill: CreateBillDto): Bill;

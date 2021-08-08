@@ -36,14 +36,23 @@ export class EnrollmentsFakeRepository
   findAndCount({
     skip,
     take,
+    relations,
   }: IFindManyOptions): Promise<[Enrollment[], number]> {
     return fakePromise([
-      this.enrollments.splice(skip, take),
+      this.withRelations(relations).splice(skip, take),
       this.enrollments.length,
     ]);
   }
 
   getLastId(): number {
     return this.enrollments.length;
+  }
+
+  private withRelations(relations: string[] = []): Enrollment[] {
+    return this.enrollments.map((enrollment) => ({
+      ...enrollment,
+      bills: relations.includes('bills') ? enrollment.bills : [],
+      student: relations.includes('student') ? enrollment.student : null,
+    }));
   }
 }

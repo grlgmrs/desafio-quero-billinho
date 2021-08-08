@@ -92,6 +92,8 @@ describe('EnrollmentsService', () => {
 
     expect(enrollments.items.length).toBe(2);
     expect(enrollments.items[0].id).toBe(4);
+    expect(enrollments.items[0].bills.length).toBe(1);
     expect(enrollments.items[1].id).toBe(5);
+    expect(enrollments.items[1].bills.length).toBe(1);
   });
 });
