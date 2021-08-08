@@ -1,6 +1,6 @@
+import { CreateEnrollmentDto } from '@modules/enrollments/dto/create-enrollment.dto';
+import { Enrollment } from '@modules/enrollments/entities/enrollment.entity';
 import { IPaginateRepository } from '@shared/helpers/paginate-helper/ipaginate';
-import { CreateEnrollmentDto } from '../dto/create-enrollment.dto';
-import { Enrollment } from '../entities/enrollment.entity';
 
 export interface IEnrollmentRepository extends IPaginateRepository<Enrollment> {
   create(createEnrollmentDto: CreateEnrollmentDto): Enrollment;

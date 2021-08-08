@@ -1,14 +1,20 @@
-import { IPaginateOptions } from '@shared/helpers/paginate-helper/ipaginate';
+import { IFindManyOptions } from '@shared/helpers/paginate-helper/ipaginate';
+import { PaginateEntity } from '@shared/helpers/paginate-helper/paginate-entity';
 import { fakePromise } from '@shared/utils/faker/fake-promise';
-import { CreateEnrollmentDto } from '../dto/create-enrollment.dto';
-import { Enrollment } from '../entities/enrollment.entity';
-import { IBillRepository } from './ibill-repository';
+import { CreateEnrollmentDto } from '../../dto/create-enrollment.dto';
+import { Enrollment } from '../../entities/enrollment.entity';
+import { IBillRepository } from '../bills/ibill-repository';
 import { IEnrollmentRepository } from './ienrollments-repository';
 
-export class EnrollmentsFakeRepository implements IEnrollmentRepository {
+export class EnrollmentsFakeRepository
+  extends PaginateEntity<Enrollment>
+  implements IEnrollmentRepository
+{
   private enrollments: Enrollment[] = [];
 
-  constructor(private billRepo: IBillRepository) {}
+  constructor(private billRepo: IBillRepository) {
+    super();
+  }
 
   create(createEnrollmentDto: CreateEnrollmentDto): Enrollment {
     return new Enrollment(createEnrollmentDto);
@@ -30,9 +36,9 @@ export class EnrollmentsFakeRepository implements IEnrollmentRepository {
   findAndCount({
     skip,
     take,
-  }: IPaginateOptions): Promise<[Enrollment[], number]> {
+  }: IFindManyOptions): Promise<[Enrollment[], number]> {
     return fakePromise([
-      this.enrollments.splice(skip!, take!),
+      this.enrollments.splice(skip, take),
       this.enrollments.length,
     ]);
   }

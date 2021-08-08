@@ -1,10 +1,14 @@
-import { IPaginateOptions } from '@shared/helpers/paginate-helper/ipaginate';
+import { IFindManyOptions } from '@shared/helpers/paginate-helper/ipaginate';
+import { PaginateEntity } from '@shared/helpers/paginate-helper/paginate-entity';
 import { fakePromise } from '@shared/utils/faker/fake-promise';
 import { CreateStudentDto } from '../dto/create-student.dto';
 import { Student } from '../entities/student.entity';
 import { IStudentsRepository } from './istudents-repository';
 
-export class StudentsFakeRepository implements IStudentsRepository {
+export class StudentsFakeRepository
+  extends PaginateEntity<Student>
+  implements IStudentsRepository
+{
   private studentsFake: Student[] = [];
 
   create(createStudentDto: CreateStudentDto): Student {
@@ -20,9 +24,9 @@ export class StudentsFakeRepository implements IStudentsRepository {
     return fakePromise<Student>(newStudent);
   }
 
-  findAndCount({ take, skip }: IPaginateOptions): Promise<[Student[], number]> {
+  findAndCount({ take, skip }: IFindManyOptions): Promise<[Student[], number]> {
     return fakePromise([
-      this.studentsFake.splice(skip!, take!),
+      this.studentsFake.splice(skip, take),
       this.studentsFake.length,
     ]);
   }

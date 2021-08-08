@@ -1,9 +1,11 @@
 import { fakePromise } from '@shared/utils/faker/fake-promise';
-import { CreateBillDto } from '../dto/create-bill.dto';
-import { Bill } from '../entities/bill.entity';
+import { CreateBillDto } from '../../dto/create-bill.dto';
+import { Bill } from '../../entities/bill.entity';
 import { IBillRepository } from './ibill-repository';
 
 export class BillsFakeRepository implements IBillRepository {
+  private bills: Bill[] = [];
+
   create(bill: CreateBillDto): Bill;
   create(bills: CreateBillDto[]): Bill[];
   create(bills: CreateBillDto | CreateBillDto[]): Bill | Bill[] {
@@ -29,7 +31,6 @@ export class BillsFakeRepository implements IBillRepository {
 
     return this.saveOne(bills);
   }
-  private bills: Bill[] = [];
 
   private saveOne(bill: CreateBillDto): Promise<Bill> {
     const newBill = new Bill(bill);

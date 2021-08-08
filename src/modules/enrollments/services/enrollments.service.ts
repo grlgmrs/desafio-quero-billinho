@@ -1,16 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import {
-  IPaginate,
-  PaginateHelper,
-  PaginateRequestDto,
-} from '@shared/helpers/paginate-helper';
 import { CreateEnrollmentDto } from '../dto/create-enrollment.dto';
 import { Bill } from '../entities/bill.entity';
 import { Enrollment } from '../entities/enrollment.entity';
-import { IBillRepository } from '../repository/ibill-repository';
-import { IEnrollmentRepository } from '../repository/ienrollments-repository';
 import BillGeneratorHelper from '../helpers/bill-generator';
+import { PaginateRequestDto } from '@shared/helpers/paginate-helper/dto/paginate-request.dto';
+import { IPaginate } from '@shared/helpers/paginate-helper/ipaginate';
+import { IEnrollmentRepository } from '../repository/enrollments/ienrollments-repository';
+import { IBillRepository } from '../repository/bills/ibill-repository';
 
 @Injectable()
 export class EnrollmentsService {
@@ -33,8 +30,6 @@ export class EnrollmentsService {
   findAll(
     paginateRequestDto: PaginateRequestDto,
   ): Promise<IPaginate<Enrollment>> {
-    const paginateHelper = new PaginateHelper(this.enrollmentRepo, ['bills']);
-
-    return paginateHelper.paginate(paginateRequestDto);
+    return this.enrollmentRepo.paginate(paginateRequestDto, ['bills']);
   }
 }

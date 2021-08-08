@@ -1,5 +1,5 @@
-import { CreateBillDto } from '../dto/create-bill.dto';
-import { Bill } from '../entities/bill.entity';
+import { CreateBillDto } from '@modules/enrollments/dto/create-bill.dto';
+import { Bill } from '@modules/enrollments/entities/bill.entity';
 
 export interface IBillRepository {
   create(bill: CreateBillDto): Bill;
