@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Query } from '@nestjs/common';
 import { StudentsService } from '../services/students.service';
 import { CreateStudentDto } from '../dto/create-student.dto';
 import { PaginateRequestDto } from '@shared/base-repository/helpers/paginate-helper/dto/paginate-request.dto';
@@ -13,7 +13,7 @@ export class StudentsController {
   }
 
   @Get()
-  findAll(@Body() paginateRequestDto: PaginateRequestDto) {
+  findAll(@Query() paginateRequestDto: PaginateRequestDto) {
     return this.studentsService.findAll(paginateRequestDto);
   }
 }

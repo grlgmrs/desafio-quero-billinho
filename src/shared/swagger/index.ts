@@ -11,6 +11,7 @@ export class SetupSwagger {
       .setTitle('Billinho API')
       .setDescription('Desafio no processo seletivo da Quero 📚')
       .setVersion('1.0')
+      .addBasicAuth()
       .build();
     const document = SwaggerModule.createDocument(this.app, config);
 
