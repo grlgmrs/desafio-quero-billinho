@@ -1,8 +1,9 @@
+import { IBaseRepository } from '@shared/base-repository/ibase-repository';
 import { PaginateRequestDto } from './dto/paginate-request.dto';
-import { IFindManyOptions, IPaginate, IPaginateHelper } from './ipaginate';
+import { IPaginate, IPaginateHelper } from './ipaginate';
 
-export abstract class PaginateEntity<T> implements IPaginateHelper<T> {
-  abstract findAndCount(options: IFindManyOptions): Promise<[T[], number]>;
+export class PaginateHelper<T> implements IPaginateHelper<T> {
+  constructor(private repo: IBaseRepository<T>) {}
 
   async paginate(
     { count, page }: PaginateRequestDto,
@@ -11,7 +12,7 @@ export abstract class PaginateEntity<T> implements IPaginateHelper<T> {
     const currentPage = page || 1;
     const take = count || 4;
 
-    const [result, _] = await this.findAndCount({
+    const [result, _] = await this.repo.findAndCount({
       relations: relations,
       take,
       skip: (currentPage - 1) * take,

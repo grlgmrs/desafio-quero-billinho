@@ -1,12 +1,12 @@
 import { CreateEnrollmentDto } from '@modules/enrollments/dto/create-enrollment.dto';
 import { Enrollment } from '@modules/enrollments/entities/enrollment.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { IFindManyOptions } from '@shared/helpers/paginate-helper/ipaginate';
-import { PaginateEntity } from '@shared/helpers/paginate-helper/paginate-entity';
+import { BaseRepository } from '@shared/base-repository/base-repository';
+import { IFindManyOptions } from '@shared/base-repository/helpers/paginate-helper/ipaginate';
 import { IEnrollmentRepository } from './ienrollments-repository';
 
 export class EnrollmentsRepository
-  extends PaginateEntity<Enrollment>
+  extends BaseRepository<Enrollment>
   implements IEnrollmentRepository
 {
   constructor(

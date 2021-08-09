@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CreateEnrollmentDto } from '../dto/create-enrollment.dto';
 import { Bill } from '../entities/bill.entity';
 import { Enrollment } from '../entities/enrollment.entity';
-import { PaginateRequestDto } from '@shared/helpers/paginate-helper/dto/paginate-request.dto';
-import { IPaginate } from '@shared/helpers/paginate-helper/ipaginate';
+import { PaginateRequestDto } from '@shared/base-repository/helpers/paginate-helper/dto/paginate-request.dto';
+import { IPaginate } from '@shared/base-repository/helpers/paginate-helper/ipaginate';
 import { IEnrollmentRepository } from '../repository/enrollments/ienrollments-repository';
 import { IBillRepository } from '../repository/bills/ibill-repository';
 

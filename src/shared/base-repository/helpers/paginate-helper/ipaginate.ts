@@ -17,7 +17,3 @@ export interface IPaginateHelper<T> {
     relations?: string[],
   ): Promise<IPaginate<T>>;
 }
-
-export interface IPaginateRepository<T> extends IPaginateHelper<T> {
-  findAndCount(options?: IFindManyOptions): Promise<[T[], number]>;
-}
