@@ -1,6 +1,6 @@
 import { CreateEnrollmentDto } from '@modules/enrollments/dto/enrollments/create-enrollment.dto';
 import { Enrollment } from '@modules/enrollments/entities/enrollment.entity';
-import { InjectConnection, InjectRepository } from '@nestjs/typeorm';
+import { InjectConnection } from '@nestjs/typeorm';
 import { BaseRepository } from '@shared/base-repository/base-repository';
 import { IFindManyOptions } from '@shared/base-repository/helpers/paginate-helper/ipaginate';
 import { Connection, Repository } from 'typeorm';

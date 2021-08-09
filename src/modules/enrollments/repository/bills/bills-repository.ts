@@ -1,6 +1,6 @@
 import { CreateBillDto } from '@modules/enrollments/dto/bills/create-bill.dto';
 import { Bill } from '@modules/enrollments/entities/bill.entity';
-import { InjectConnection, InjectRepository } from '@nestjs/typeorm';
+import { InjectConnection } from '@nestjs/typeorm';
 import { Connection, Repository } from 'typeorm';
 import { GenerateBillHelper } from './helpers/generate-bill-helper';
 import { IBillRepository } from './ibill-repository';
