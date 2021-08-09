@@ -60,7 +60,7 @@ describe('AppController (e2e)', () => {
 
     const response = await request(app.getHttpServer())
       .get('/students')
-      .send(paginate);
+      .query(paginate);
 
     const students = response.body['items'] as Student[];
 
