@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  app:
+    container_name: app_e2e_test
+    build: .
+    volumes:
+      - .:/var/www/app
+      - /var/www/app/node_modules # 'hack' prevents node_modules/ in the container from being overridden
+    entrypoint: ./.docker/e2e/entrypoint.sh
+    environment:
+      PORT: 3500
+      NODE_ENV: test
+      DB_HOSTNAME: db
+      DB_PORT: 5432
+      DB_NAME: example
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+    networks:
+      - webnet
+    depends_on:
+      - db
+
+  db:
+    container_name: postgres
+    image: postgres:9.4
+    networks:
+      - webnet
+    environment:
+      POSTGRES_DB: example
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PG_DATA: /var/lib/postgresql/data
+    volumes:
+      - ./.docker/e2e/.pgdata:/var/lib/postgresql/data
+
+networks:
+  webnet:
+
+volumes:
+  pgdata:
+  logs:
