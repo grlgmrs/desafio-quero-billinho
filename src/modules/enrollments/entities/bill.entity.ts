@@ -5,14 +5,8 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { CreateBillDto } from '../dto/bills/create-bill.dto';
+import { BillStatus, CreateBillDto } from '../dto/bills/create-bill.dto';
 import { Enrollment } from './enrollment.entity';
-
-export enum BillStatus {
-  Open = 'open',
-  Pending = 'pending',
-  Paid = 'paid',
-}
 
 @Entity('bills')
 export class Bill {

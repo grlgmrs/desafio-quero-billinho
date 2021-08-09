@@ -1,6 +1,7 @@
-import { InjectRepository } from '@nestjs/typeorm';
+import { InjectConnection, InjectRepository } from '@nestjs/typeorm';
 import { BaseRepository } from '@shared/base-repository/base-repository';
 import { IFindManyOptions } from '@shared/base-repository/helpers/paginate-helper/ipaginate';
+import { Connection, Repository } from 'typeorm';
 import { CreateStudentDto } from '../dto/create-student.dto';
 import { Student } from '../entities/student.entity';
 import { IStudentsRepository } from './istudents-repository';
@@ -9,10 +10,12 @@ export class StudentsRepository
   extends BaseRepository<Student>
   implements IStudentsRepository
 {
-  constructor(
-    @InjectRepository(Student) private studentsRepo: IStudentsRepository,
-  ) {
+  private studentsRepo: Repository<Student>;
+
+  constructor(@InjectConnection() connection: Connection) {
     super();
+
+    this.studentsRepo = connection.getRepository(Student);
   }
 
   create(createStudentDto: CreateStudentDto): Student {

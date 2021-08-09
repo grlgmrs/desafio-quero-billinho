@@ -5,7 +5,12 @@ import {
   IsOptional,
   Min,
 } from 'class-validator';
-import { BillStatus } from '../../entities/bill.entity';
+
+export enum BillStatus {
+  Open = 'open',
+  Pending = 'pending',
+  Paid = 'paid',
+}
 
 export class CreateBillDto {
   @Min(1)

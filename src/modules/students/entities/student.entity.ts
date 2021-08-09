@@ -1,11 +1,6 @@
 import { Enrollment } from '../../enrollments/entities/enrollment.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { CreateStudentDto } from '../dto/create-student.dto';
-
-export enum PaymentMethod {
-  CreditCard = 'credit_card',
-  Boleto = 'boleto',
-}
+import { CreateStudentDto, PaymentMethod } from '../dto/create-student.dto';
 
 @Entity({ name: 'students' })
 export class Student {

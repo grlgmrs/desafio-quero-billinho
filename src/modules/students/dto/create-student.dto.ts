@@ -1,7 +1,11 @@
 import { IsDateString, IsEnum, IsNotEmpty, IsOptional } from 'class-validator';
 import { Transform } from 'class-transformer';
 import { IsValidCPF } from '@shared/validators/is-valid-cpf.rule';
-import { PaymentMethod } from '../entities/student.entity';
+
+export enum PaymentMethod {
+  CreditCard = 'credit_card',
+  Boleto = 'boleto',
+}
 
 export class CreateStudentDto {
   @IsNotEmpty()

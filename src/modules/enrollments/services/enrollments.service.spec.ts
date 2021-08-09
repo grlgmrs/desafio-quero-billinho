@@ -1,12 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Bill, BillStatus } from '../entities/bill.entity';
+import { Bill } from '../entities/bill.entity';
 import { Enrollment } from '../entities/enrollment.entity';
 import { BillsFakeRepository } from '../repository/bills/bills-fake-repository';
 import { EnrollmentsFakeRepository } from '../repository/enrollments/enrollments-fake-repository';
 import { EnrollmentsService } from './enrollments.service';
 import { CreateEnrollmentDto } from '../dto/enrollments/create-enrollment.dto';
 import { IBillRepository } from '../repository/bills/ibill-repository';
+import { BillStatus } from '../dto/bills/create-bill.dto';
 
 describe('EnrollmentsService', () => {
   let service: EnrollmentsService;

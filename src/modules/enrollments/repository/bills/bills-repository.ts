@@ -1,6 +1,7 @@
 import { CreateBillDto } from '@modules/enrollments/dto/bills/create-bill.dto';
 import { Bill } from '@modules/enrollments/entities/bill.entity';
-import { InjectRepository } from '@nestjs/typeorm';
+import { InjectConnection, InjectRepository } from '@nestjs/typeorm';
+import { Connection, Repository } from 'typeorm';
 import { GenerateBillHelper } from './helpers/generate-bill-helper';
 import { IBillRepository } from './ibill-repository';
 
@@ -8,8 +9,12 @@ export class BillsRepository
   extends GenerateBillHelper
   implements IBillRepository
 {
-  constructor(@InjectRepository(Bill) private billsRepo: IBillRepository) {
+  private billsRepo: Repository<Bill>;
+
+  constructor(@InjectConnection() connection: Connection) {
     super();
+
+    this.billsRepo = connection.getRepository(Bill);
   }
 
   create(bill: CreateBillDto): Bill;

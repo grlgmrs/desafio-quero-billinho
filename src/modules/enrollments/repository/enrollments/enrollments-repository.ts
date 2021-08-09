@@ -1,18 +1,21 @@
 import { CreateEnrollmentDto } from '@modules/enrollments/dto/enrollments/create-enrollment.dto';
 import { Enrollment } from '@modules/enrollments/entities/enrollment.entity';
-import { InjectRepository } from '@nestjs/typeorm';
+import { InjectConnection, InjectRepository } from '@nestjs/typeorm';
 import { BaseRepository } from '@shared/base-repository/base-repository';
 import { IFindManyOptions } from '@shared/base-repository/helpers/paginate-helper/ipaginate';
+import { Connection, Repository } from 'typeorm';
 import { IEnrollmentRepository } from './ienrollments-repository';
 
 export class EnrollmentsRepository
   extends BaseRepository<Enrollment>
   implements IEnrollmentRepository
 {
-  constructor(
-    @InjectRepository(Enrollment) private enrollmentRepo: IEnrollmentRepository,
-  ) {
+  private enrollmentRepo: Repository<Enrollment>;
+
+  constructor(@InjectConnection() connection: Connection) {
     super();
+
+    this.enrollmentRepo = connection.getRepository(Enrollment);
   }
 
   create(createEnrollmentDto: CreateEnrollmentDto): Enrollment {

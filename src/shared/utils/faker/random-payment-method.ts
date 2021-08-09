@@ -1,4 +1,4 @@
-import { PaymentMethod } from '@modules/students/entities/student.entity';
+import { PaymentMethod } from '@modules/students/dto/create-student.dto';
 import * as faker from 'faker';
 
 export const randomPaymentMethod = (): PaymentMethod =>
