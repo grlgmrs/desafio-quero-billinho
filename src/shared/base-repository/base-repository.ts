@@ -13,8 +13,6 @@ export abstract class BaseRepository<T> implements IPaginateHelper<T> {
     paginateRequestDto: PaginateRequestDto,
     relations?: string[],
   ): Promise<IPaginate<T>> {
-    const paginateHelper = new PaginateHelper(this);
-
-    return paginateHelper.paginate(paginateRequestDto, relations);
+    return new PaginateHelper(this).paginate(paginateRequestDto, relations);
   }
 }

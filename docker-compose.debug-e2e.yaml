@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:9.4
+    environment:
+      POSTGRES_DB: ${DB_TEST_NAME}
+      POSTGRES_USER: ${DB_TEST_USERNAME}
+      POSTGRES_PASSWORD: ${DB_TEST_PASSWORD}
+      PG_DATA: /var/lib/postgresql/data
+    ports:
+      - ${DB_TEST_PORT}:5432
+    volumes:
+      - ./.docker/e2e/.pgdata:/var/lib/postgresql/data
+    extra_hosts:
+      - 'host.docker.internal:172.17.0.1'

@@ -27,6 +27,6 @@ export class StudentsRepository
   }
 
   findAndCount(options?: IFindManyOptions): Promise<[Student[], number]> {
-    throw this.studentsRepo.findAndCount(options);
+    return this.studentsRepo.findAndCount(options);
   }
 }
