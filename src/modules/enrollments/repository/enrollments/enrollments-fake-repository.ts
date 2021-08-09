@@ -1,7 +1,7 @@
 import { BaseRepository } from '@shared/base-repository/base-repository';
 import { IFindManyOptions } from '@shared/base-repository/helpers/paginate-helper/ipaginate';
 import { fakePromise } from '@shared/utils/faker/fake-promise';
-import { CreateEnrollmentDto } from '../../dto/create-enrollment.dto';
+import { CreateEnrollmentDto } from '../../dto/enrollments/create-enrollment.dto';
 import { Enrollment } from '../../entities/enrollment.entity';
 import { IBillRepository } from '../bills/ibill-repository';
 import { IEnrollmentRepository } from './ienrollments-repository';

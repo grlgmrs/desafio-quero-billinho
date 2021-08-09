@@ -1,5 +1,5 @@
 import { fakePromise } from '@shared/utils/faker/fake-promise';
-import { CreateBillDto } from '../../dto/create-bill.dto';
+import { CreateBillDto } from '../../dto/bills/create-bill.dto';
 import { Bill } from '../../entities/bill.entity';
 import { GenerateBillHelper } from './helpers/generate-bill-helper';
 import { IBillRepository } from './ibill-repository';

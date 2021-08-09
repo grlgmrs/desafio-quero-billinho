@@ -5,7 +5,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { CreateBillDto } from '../dto/create-bill.dto';
+import { CreateBillDto } from '../dto/bills/create-bill.dto';
 import { Enrollment } from './enrollment.entity';
 
 export enum BillStatus {

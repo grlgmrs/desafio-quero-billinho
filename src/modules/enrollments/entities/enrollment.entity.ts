@@ -8,7 +8,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Bill } from './bill.entity';
-import { CreateEnrollmentDto } from '../dto/create-enrollment.dto';
+import { CreateEnrollmentDto } from '../dto/enrollments/create-enrollment.dto';
 
 @Entity('enrollments')
 export class Enrollment {

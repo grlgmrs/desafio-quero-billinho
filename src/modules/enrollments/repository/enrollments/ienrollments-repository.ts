@@ -1,4 +1,4 @@
-import { CreateEnrollmentDto } from '@modules/enrollments/dto/create-enrollment.dto';
+import { CreateEnrollmentDto } from '@modules/enrollments/dto/enrollments/create-enrollment.dto';
 import { Enrollment } from '@modules/enrollments/entities/enrollment.entity';
 import { IBaseRepository } from '@shared/base-repository/ibase-repository';
 

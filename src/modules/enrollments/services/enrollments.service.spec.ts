@@ -5,7 +5,7 @@ import { Enrollment } from '../entities/enrollment.entity';
 import { BillsFakeRepository } from '../repository/bills/bills-fake-repository';
 import { EnrollmentsFakeRepository } from '../repository/enrollments/enrollments-fake-repository';
 import { EnrollmentsService } from './enrollments.service';
-import { CreateEnrollmentDto } from '../dto/create-enrollment.dto';
+import { CreateEnrollmentDto } from '../dto/enrollments/create-enrollment.dto';
 import { IBillRepository } from '../repository/bills/ibill-repository';
 
 describe('EnrollmentsService', () => {

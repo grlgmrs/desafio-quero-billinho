@@ -1,8 +1,8 @@
 import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
-import { CreateEnrollmentDto } from '../dto/create-enrollment.dto';
-import { PaginateRequestDto } from '@shared/helpers/paginate-helper';
+import { CreateEnrollmentDto } from '../dto/enrollments/create-enrollment.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { EnrollmentsService } from '../services/enrollments.service';
+import { PaginateRequestDto } from '@shared/base-repository/helpers/paginate-helper/dto/paginate-request.dto';
 
 @Controller('enrollments')
 export class EnrollmentsController {

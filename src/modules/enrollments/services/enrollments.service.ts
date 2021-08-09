@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateEnrollmentDto } from '../dto/create-enrollment.dto';
+import { CreateEnrollmentDto } from '../dto/enrollments/create-enrollment.dto';
 import { Bill } from '../entities/bill.entity';
 import { Enrollment } from '../entities/enrollment.entity';
 import { PaginateRequestDto } from '@shared/base-repository/helpers/paginate-helper/dto/paginate-request.dto';

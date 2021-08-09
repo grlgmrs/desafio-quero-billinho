@@ -5,7 +5,7 @@ import {
   IsOptional,
   Min,
 } from 'class-validator';
-import { BillStatus } from '../entities/bill.entity';
+import { BillStatus } from '../../entities/bill.entity';
 
 export class CreateBillDto {
   @Min(1)
