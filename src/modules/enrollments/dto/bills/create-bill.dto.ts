@@ -16,6 +16,7 @@ export class CreateBillDto {
   @IsDateString()
   due_date: Date;
 
+  @IsOptional()
   @IsEnum(BillStatus, {
     message: 'status must be "open", "pending", or "paid"',
   })
